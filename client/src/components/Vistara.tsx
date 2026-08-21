@@ -47,7 +47,7 @@ export function Header() {
 export function Footer() {
   return <footer className="bg-black text-[var(--gesso)]">
     <div className="container grid gap-12 py-16 md:grid-cols-[1.2fr_1fr_1fr] md:py-20">
-      <div><Wordmark dark /><p className="mt-7 max-w-[270px] text-[14px] leading-6 text-[var(--gesso)]/65">[PLACEHOLDER — registered address · phone · WhatsApp · map embed]</p></div>
+      <div><Wordmark dark /><div className="mt-7 max-w-[270px] space-y-5"><p className="text-[14px] leading-6 text-[var(--gesso)]/65">85, Ayyappa Block, Kogilu,<br />Yelahanka, Bangalore 560064</p><div className="border-t border-[var(--gesso)]/15 pt-5"><p className="mono text-[10px] tracking-[.15em] text-[var(--oak)]">CALL / WHATSAPP</p><a href="tel:+919964649595" className="mt-2 block text-[16px] font-semibold text-[var(--gesso)] hover:text-[var(--oak)] transition-colors">+91 99646 49595</a></div></div></div>
       <div><p className="mono text-[var(--oak)]">Services</p><div className="mt-5 flex flex-col gap-3 text-[14px] text-[var(--gesso)]/75"><a href="#">Residential interiors</a><a href="#">Modular kitchens</a><a href="#">Commercial & corporate</a><a href="#">Construction & architecture</a><a href="#">Vastu-aligned planning</a></div></div>
       <div><p className="mono text-[var(--oak)]">Studio</p><div className="mt-5 flex flex-col gap-3 text-[14px] text-[var(--gesso)]/75"><a href="#">Projects</a><a href="#">About Vistara</a><Link href="/contact">Contact</Link></div><p className="mt-10 text-[12px] text-[var(--gesso)]/45">© 2026 Vistara Interior. All rights reserved.</p></div>
     </div>
@@ -110,15 +110,18 @@ export function FloatingWhatsApp() {
 }
 
 function CallDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
-  return <AlertDialog open={open} onOpenChange={onOpenChange}>
+  const [copied, setCopied] = useState(false);
+  const copyNumber = () => { navigator.clipboard.writeText(PHONE_NUMBER.replace(/\s/g, "")); setCopied(true); setTimeout(() => setCopied(false), 2000); };
+  return <AlertDialog open={open} onOpenChange={(v) => { onOpenChange(v); if (!v) setCopied(false); }}>
     <AlertDialogContent className="bg-[var(--gesso)] border-[var(--line)]">
       <AlertDialogHeader>
         <AlertDialogTitle className="display text-[22px]">Call Vistara Interior</AlertDialogTitle>
-        <AlertDialogDescription className="text-[var(--muted-ink)] text-[15px] leading-6">You'll be redirected to your phone to call Vistara Interior at <span className="font-semibold text-[var(--ink)]">{PHONE_NUMBER}</span>. Continue?</AlertDialogDescription>
+        <AlertDialogDescription className="text-[var(--muted-ink)] text-[15px] leading-6">You'll be redirected to call <span className="font-semibold text-[var(--ink)]">{PHONE_NUMBER}</span>. Continue?</AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <AlertDialogCancel className="rounded-full border-[var(--line)] text-[var(--muted-ink)]">Cancel</AlertDialogCancel>
-        <AlertDialogAction className="button-fern rounded-full" onClick={() => { window.location.href = `tel:${PHONE_NUMBER.replace(/\s/g, "")}`; }}>Call now</AlertDialogAction>
+        <button type="button" onClick={copyNumber} className="h-10 rounded-full border border-[var(--line)] px-5 text-[14px] font-medium text-[var(--muted-ink)] transition-colors hover:bg-[var(--limewash)] cursor-pointer">{copied ? "Copied!" : "Copy number"}</button>
+        <AlertDialogCancel className="h-10 rounded-full border-[var(--line)] px-5 text-[14px] text-[var(--muted-ink)]">Cancel</AlertDialogCancel>
+        <AlertDialogAction className="button-fern h-10 rounded-full px-5 text-[14px]" onClick={() => { window.location.href = `tel:${PHONE_NUMBER.replace(/\s/g, "")}`; }}>Call now</AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>
   </AlertDialog>;
