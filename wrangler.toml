@@ -1,0 +1,6 @@
+name = "vistara-interior"
+compatibility_date = "2024-12-01"
+
+[assets]
+directory = "./dist/public"
+not_found_handling = "single-page-application"
