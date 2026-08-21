@@ -57,7 +57,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 ::selection { background: var(--oak); color: var(--ink); }
 
 @layer components {
-  .page-shell { min-height: 100vh; overflow: clip; }
+  .page-shell { min-height: 100vh; overflow: clip; zoom: 0.9; }
   .container { width: min(1240px, calc(100% - clamp(48px, 8vw, 160px))); margin-inline: auto; }
   .display { font-family: "Newsreader", Georgia, serif; font-weight: 500; letter-spacing: -.045em; line-height: .98; }
   .eyebrow, .mono { font-family: "DM Mono", monospace; text-transform: uppercase; letter-spacing: .14em; font-size: 10px; line-height: 1.4; }
@@ -84,9 +84,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 }
 
-@media (min-width: 1280px) {
-  html { zoom: 0.9; }
-}
 
 @media (max-width: 720px) {
   .container { width: min(100% - 32px, 1240px); }
