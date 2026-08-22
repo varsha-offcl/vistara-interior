@@ -31,7 +31,7 @@ export function Wordmark({ dark = false }: { dark?: boolean }) {
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  return <header className="relative z-50 border-b border-[var(--line)] bg-[var(--gesso)]/95 backdrop-blur-md">
+  return <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--gesso)]/95 backdrop-blur-md">
     <div className="container flex h-[78px] items-center justify-between">
       <Wordmark />
       <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
