@@ -65,7 +65,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .text-balance { text-wrap: balance; }
   .soft-rule { height: 1px; background: var(--line); }
   .oak-rule { border-top: 2px solid var(--oak); }
-  .button-fern { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 999px; background: var(--fern); color: #FAF8F4 !important; font-size: 13px; font-weight: 600; transition: transform .18s var(--ease-out), background .18s var(--ease-out); }
+  .button-fern { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 999px; background: var(--fern); color: #FAF8F4 !important; font-size: 13px; font-weight: 600; border: 2px solid var(--oak); transition: transform .18s var(--ease-out), background .18s var(--ease-out); }
   .button-fern:hover { background: var(--fern-deep); color: #FAF8F4 !important; transform: translateY(-2px); }
   .button-fern:active { transform: scale(.97); }
   .button-outline { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border: 1px solid var(--fern); border-radius: 999px; color: var(--fern); font-size: 13px; font-weight: 600; transition: background .18s var(--ease-out), color .18s var(--ease-out), transform .18s var(--ease-out); }
